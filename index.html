@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unfiltered Co. | Premium Streetwear</title>
+
+<meta name="description" content="Premium pastel streetwear for expressive youth.">
+<meta name="keywords" content="streetwear, hoodies, t-shirts, fashion">
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+    <h1>UNFILTERED CO.</h1>
+</div>
+
+<!-- TOP BAR -->
+
+<div class="announcement-bar">
+    🚚 Free Shipping Above ₹999 | 🔥 Summer Sale Live
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+<nav>
+
+<div class="logo">
+    UNFILTERED CO.
+</div>
+
+<ul class="nav-menu">
+    <li onclick="showSection('home')">Home</li>
+    <li onclick="showSection('shop')">Shop</li>
+    <li onclick="showSection('about')">About</li>
+    <li onclick="showSection('contact')">Contact</li>
+</ul>
+
+<div class="nav-right">
+
+<input
+type="text"
+id="search"
+placeholder="Search products..."
+
+>
+
+<button id="themeToggle">
+    <i class="fas fa-moon"></i>
+</button>
+
+<div id="cartIcon">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="cartCount">0</span>
+</div>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- CART SIDEBAR -->
+
+<div id="cartSidebar">
+
+<div class="cart-header">
+
+<h2>Your Cart</h2>
+
+<button
+id="closeCart"
+class="close-cart-btn"
+>
+✕
+</button>
+
+</div>
+
+<div id="cartItems"></div>
+
+<h3>
+Total: ₹<span id="cartTotal">0</span>
+</h3>
+
+<div class="coupon-box">
+
+<input
+id="couponInput"
+placeholder="Coupon Code"
+>
+
+<button onclick="applyCoupon()">
+Apply
+</button>
+
+</div>
+
+</div>
+
+<!-- PRODUCT MODAL -->
+
+<div id="productModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">×</span>
+
+<img id="modalImg">
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalPrice"></p>
+
+<select id="sizeSelect">
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
+
+<input
+type="number"
+id="qty"
+value="1"
+min="1"
+
+>
+
+<button onclick="addToCart()">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+<main>
+
+<!-- HERO -->
+
+<section id="home" class="active fade">
+
+<div class="hero">
+
+<div class="hero-content">
+
+<span class="hero-tag">
+🔥 New Summer Collection 2026
+</span>
+
+<h1>
+Pastel Streetwear
+<span>For The Bold</span>
+</h1>
+
+<p>
+Premium streetwear designed for creators,
+dreamers and trendsetters.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary-btn"
+onclick="showSection('shop')">
+Shop Collection
+</button>
+
+<button class="outline-btn">
+Watch Lookbook
+</button>
+
+</div>
+
+<div class="hero-stats">
+
+<div>
+<h3>50K+</h3>
+<p>Customers</p>
+</div>
+
+<div>
+<h3>4.9★</h3>
+<p>Rating</p>
+</div>
+
+<div>
+<h3>200K+</h3>
+<p>Orders</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=1000"
+alt="Fashion Model"
+class="float"
+>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="feature-card">
+<i class="fas fa-truck-fast"></i>
+<h3>Fast Delivery</h3>
+<p>Across India</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-shield"></i>
+<h3>Secure Payments</h3>
+<p>100% Protected</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-rotate-left"></i>
+<h3>Easy Returns</h3>
+<p>7 Days Return</p>
+</div>
+
+<div class="feature-card">
+<i class="fas fa-star"></i>
+<h3>Premium Quality</h3>
+<p>Designed To Last</p>
+</div>
+
+</section>
+
+<!-- SHOP -->
+
+<section id="shop" class="fade">
+
+<div class="section-heading">
+<h2>Featured Collection</h2>
+<p>
+Discover our best selling pieces.
+</p>
+</div>
+
+<div class="filters">
+
+<button onclick="filterProducts('all')">
+All
+</button>
+
+<button onclick="filterProducts('tee')">
+T-Shirts
+</button>
+
+<button onclick="filterProducts('hoodie')">
+Hoodies
+</button>
+
+<button onclick="filterProducts('sneaker')">
+Sneakers
+</button>
+
+</div>
+<div class="sort-wrapper">
+
+<select id="sortProducts">
+
+<option value="default">
+Sort Products
+</option>
+
+<option value="low">
+Price Low → High
+</option>
+
+<option value="high">
+Price High → Low
+</option>
+
+<option value="rating">
+Highest Rated
+</option>
+
+</select>
+
+</div>
+
+<div id="productList" class="products"></div>
+
+</section>
+
+<section id="recentlyViewed">
+
+<h2>
+Recently Viewed
+</h2>
+
+<div
+class="products"
+id="recentProducts"
+>
+</div>
+
+</section>
+
+<!-- BRAND STORY -->
+
+<section id="about" class="fade">
+
+<div class="about-wrapper">
+
+<div>
+<h2>Our Story</h2>
+
+<p>
+Unfiltered Co. was created for people
+who express themselves without limits.
+Every collection is designed around
+minimal aesthetics, premium comfort
+and modern street culture.
+</p>
+
+<p>
+We blend pastel tones with bold
+silhouettes to create timeless
+streetwear.
+</p>
+
+</div>
+
+<div class="about-image">
+<img
+src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900"
+alt=""
+>
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+
+<h2>What Customers Say</h2>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+⭐⭐⭐⭐⭐
+<p>
+Best quality hoodie I've ever bought.
+</p>
+<h4>Rahul Sharma</h4>
+</div>
+
+<div class="testimonial-card">
+⭐⭐⭐⭐⭐
+<p>
+Looks premium and fits perfectly.
+</p>
+<h4>Ananya Gupta</h4>
+</div>
+
+<div class="testimonial-card">
+⭐⭐⭐⭐⭐
+<p>
+Amazing quality for the price.
+</p>
+<h4>Karan Singh</h4>
+</div>
+
+</div>
+
+</section>
+
+<!-- INSTAGRAM -->
+
+<section class="insta">
+
+<h2>@unfilteredco</h2>
+
+<div class="insta-grid">
+
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500">
+
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500">
+
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500">
+
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500">
+
+</div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+<h2>Join The Community</h2>
+
+<p>
+Get exclusive launches and offers.
+</p>
+
+<input
+type="email"
+placeholder="Enter your email"
+
+>
+
+<button>
+Subscribe
+</button>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="faq">
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>How long is delivery?</h3>
+<p>Usually 3-7 business days.</p>
+</div>
+
+<div class="faq-item">
+<h3>Do you offer returns?</h3>
+<p>Yes, within 7 days of delivery.</p>
+</div>
+
+<div class="faq-item">
+<h3>Are payments secure?</h3>
+<p>Yes, all transactions are encrypted.</p>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="fade">
+
+<h2>Contact Us</h2>
+
+<form>
+
+<input
+type="text"
+placeholder="Your Name"
+
+>
+
+<input
+type="email"
+placeholder="Your Email"
+
+>
+
+<textarea
+placeholder="Your Message"
+></textarea>
+
+<button>
+Send Message
+</button>
+
+</form>
+
+</section>
+
+</main>
+
+<!-- WHATSAPP BUTTON -->
+
+<a
+class="whatsapp-btn"
+href="https://wa.me/918882296250"
+target="_blank"
+
+>
+
+<i class="fab fa-whatsapp"></i> </a>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+<h3>Unfiltered Co.</h3>
+<p>
+Premium Streetwear Brand
+</p>
+</div>
+
+<div>
+<h4>Quick Links</h4>
+<p>Home</p>
+<p>Shop</p>
+<p>Contact</p>
+</div>
+
+<div>
+<h4>Socials</h4>
+<p>Instagram</p>
+<p>Facebook</p>
+<p>Twitter</p>
+</div>
+
+</div>
+
+<p class="copyright">
+© 2026 Unfiltered Co.
+</p>
+
+</footer>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
